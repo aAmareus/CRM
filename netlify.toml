@@ -1,6 +1,11 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  [build.environment]
+    NODE_VERSION = "20"
+    # This key is public by design in Next.js (exposed to the browser)
+    # Avoid blocking builds by secrets scanning on this known-public key
+    SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
