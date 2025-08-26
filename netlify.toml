@@ -3,9 +3,9 @@
   publish = ".next"
   [build.environment]
     NODE_VERSION = "20"
-    # This key is public by design in Next.js (exposed to the browser)
-    # Avoid blocking builds by secrets scanning on this known-public key
-    SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+    # These NEXT_PUBLIC_* keys are intentionally exposed to the client.
+    # Omit them from Netlify secrets scanning to avoid false positives.
+    SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
