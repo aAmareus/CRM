@@ -51,10 +51,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    /* Use CSS variables directly to avoid relying on a Tailwind color token */
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    /* Map CSS variables directly instead of Tailwind utilities */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 

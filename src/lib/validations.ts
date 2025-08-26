@@ -41,4 +41,6 @@ export const taskSchema = z.object({
   dueDate: z.string().optional(),
   priority: z.string().default("medium"),
   completed: z.boolean().default(false),
+  // Optional relation to a client selected from a dropdown
+  clientId: z.string().optional(),
 })
