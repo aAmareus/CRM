@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { User, Session } from "@supabase/supabase-js"
 import { supabase } from "@/lib/supabase"
+import { getPublicBaseUrl } from "@/lib/utils"
 
 interface AuthContextType {
   user: User | null
@@ -53,6 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email,
       password,
       options: {
+        emailRedirectTo: `${getPublicBaseUrl()}/auth/callback`,
         data: {
           full_name: fullName,
         },
